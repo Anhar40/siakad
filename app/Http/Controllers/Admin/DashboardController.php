@@ -89,9 +89,20 @@ class DashboardController extends Controller
             ->get();
 
         return view('admin.dashboard.index', compact(
-            'stats', 'gradeDistribution', 'activeYear', 
-            'prodiStats', 'dosenPerProdi', 'isSuperAdmin', 'fakultas'
-        ));
+            'stats',
+            'gradeDistribution',
+            'activeYear',
+            'prodiStats',
+            'dosenPerProdi',
+            'isSuperAdmin',
+            'fakultas'
+        ))->with('meta', [
+            'title' => $isSuperAdmin
+                ? 'Dashboard Super Admin | SIAKAD'
+                : 'Dashboard Fakultas ' . ($fakultas->nama ?? ''),
+            'description' => 'Dashboard Sistem Informasi Akademik',
+            'image' => asset('images/og-dashboard.jpg'),
+        ]);
     }
 }
 

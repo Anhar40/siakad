@@ -1,95 +1,233 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KHS {{ $tahunAkademik->tahun }} Semester {{ $tahunAkademik->semester }} - {{ $mahasiswa->nim }}</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Times New Roman', serif; font-size: 11pt; line-height: 1.4; padding: 20mm; background: white; }
-        .header { text-align: center; margin-bottom: 20px; border-bottom: 3px double #000; padding-bottom: 15px; }
-        .header h1 { font-size: 16pt; font-weight: bold; margin-bottom: 5px; }
-        .header h2 { font-size: 14pt; font-weight: normal; margin-bottom: 5px; }
-        .header p { font-size: 10pt; color: #333; }
-        .title { text-align: center; font-size: 14pt; font-weight: bold; margin: 20px 0; text-transform: uppercase; letter-spacing: 2px; }
-        .subtitle { text-align: center; font-size: 12pt; margin-bottom: 20px; }
-        .info-table { width: 100%; margin-bottom: 20px; }
-        .info-table td { padding: 3px 0; vertical-align: top; }
-        .info-table .label { width: 150px; }
-        .info-table .separator { width: 20px; text-align: center; }
-        table.nilai { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-        table.nilai th, table.nilai td { border: 1px solid #000; padding: 6px 8px; }
-        table.nilai th { background: #f0f0f0; font-weight: bold; text-align: center; }
-        table.nilai td.center { text-align: center; }
-        table.nilai td.right { text-align: right; }
-        table.nilai tfoot td { font-weight: bold; background: #f9f9f9; }
-        .summary { margin-top: 20px; display: flex; gap: 20px; }
-        .summary-box { flex: 1; text-align: center; padding: 15px; border: 2px solid #000; }
-        .summary-box .value { font-size: 28pt; font-weight: bold; }
-        .summary-box .label { font-size: 10pt; color: #666; text-transform: uppercase; }
-        .footer { margin-top: 40px; display: flex; justify-content: space-between; }
-        .footer .signature { text-align: center; width: 200px; }
-        .footer .signature .line { border-top: 1px solid #000; margin-top: 60px; padding-top: 5px; }
-        .print-btn { position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; background: #4f46e5; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; }
-        .print-btn:hover { background: #4338ca; }
-        @media print {
-            body { padding: 10mm; }
-            .print-btn { display: none; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KHS {{ $tahunAkademik->tahun }} Semester {{ $tahunAkademik->semester }} - {{ $mahasiswa->nim }}</title>
+
+<style>
+    body {
+        font-family: "Times New Roman", serif;
+        background: #f2f2f2;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .paper {
+        max-width: 210mm;
+        min-height: 297mm;
+        background: #e6f0ef;
+        margin: auto;
+        padding: 25mm 20mm;
+        box-sizing: border-box;
+    }
+
+.header {
+    display: flex;
+    flex-direction: column; /* logo di atas teks */
+    align-items: center;    /* tengah-tengah secara horizontal */
+    gap: 10px;              /* jarak antara logo dan teks */
+    margin-bottom: 20px;
+}
+
+.logo-img {
+    width: 80px;     /* ukuran logo */
+    height: auto;
+}
+
+.header-text {
+    text-align: center;
+}
+
+.header-text .unswa {
+    font-weight: bold;
+    font-size: clamp(16px, 2vw, 20px);
+}
+
+.header-text .univ {
+    font-size: clamp(14px, 1.8vw, 18px);
+    color: #555;
+}
+
+    hr {
+        border: none;
+        border-top: 2px solid #333;
+        margin: 10px 0 15px;
+    }
+
+    h2 {
+        text-align: center;
+        margin: 10px 0 20px;
+        font-size: clamp(14px, 1.8vw, 16px);
+        letter-spacing: 1px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+    }
+
+    .info td {
+        padding: 3px 5px;
+        vertical-align: top;
+    }
+
+    /* TABEL NILAI */
+    .nilai {
+        overflow-x: auto;
+        display: block;
+    }
+
+    .nilai table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .nilai th, .nilai td {
+        border: 1px dashed #333;
+        padding: 5px;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .nilai th {
+        font-weight: bold;
+    }
+
+    .left {
+        text-align: left !important;
+    }
+
+    /* RINGKASAN */
+    .summary {
+        margin-top: 15px;
+        font-size: 13px;
+    }
+
+    .summary td {
+        padding: 3px 5px;
+    }
+
+    /* FOOTER */
+    .footer {
+        margin-top: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        font-size: 13px;
+        gap: 20px;
+    }
+
+    .ttd {
+        text-align: center;
+        width: 100%;
+        max-width: 40%;
+    }
+
+    .ttd .nama {
+        margin-top: 60px;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    .keterangan {
+        margin-top: 30px;
+        font-size: 12px;
+    }
+
+    .print-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        background: #4f46e5;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        z-index: 1000;
+    }
+
+    .print-btn:hover {
+        background: #4338ca;
+    }
+
+    /* CETAK */
+    @media print {
+        body {
+            background: none;
+            padding: 0;
         }
-    </style>
+        .paper {
+            margin: 0;
+        }
+        .print-btn {
+            display: none;
+        }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .ttd {
+            max-width: 100%;
+        }
+    }
+</style>
 </head>
+
 <body>
+
+<div class="paper">
     <button class="print-btn" onclick="window.print()">🖨️ Cetak / PDF</button>
 
+    <!-- HEADER -->
     <div class="header">
-        <h1>KULIM UNIVERSITY</h1>
-        <h2>{{ $mahasiswa->prodi->fakultas->nama_fakultas ?? 'FAKULTAS' }}</h2>
-        <p>Jl. Bukit Barisan No. 01 | Telp: 08123456789</p>
+        <img src="/LOGO-KAMPUS.png" alt="Logo UNSWA" class="logo-img">
+        <div class="header-text">
+            <div class="unswa">UNSWA</div>
+            <div class="univ">UNIVERSITAS NGGUSUWARU</div>
+        </div>
     </div>
 
-    <div class="title">Kartu Hasil Studi (KHS)</div>
-    <div class="subtitle">Tahun Akademik {{ $tahunAkademik->tahun }} - Semester {{ $tahunAkademik->semester }}</div>
+    <hr>
 
-    <table class="info-table">
-        <tr>
-            <td class="label">Nama Mahasiswa</td>
-            <td class="separator">:</td>
-            <td><strong>{{ $mahasiswa->user->name }}</strong></td>
-            <td class="label">Program Studi</td>
-            <td class="separator">:</td>
-            <td>{{ $mahasiswa->prodi->nama_prodi ?? '-' }}</td>
-        </tr>
-        <tr>
-            <td class="label">NIM</td>
-            <td class="separator">:</td>
-            <td><strong>{{ $mahasiswa->nim }}</strong></td>
-            <td class="label">Fakultas</td>
-            <td class="separator">:</td>
-            <td>{{ $mahasiswa->prodi->fakultas->nama_fakultas ?? '-' }}</td>
-        </tr>
-        <tr>
-            <td class="label">Tanggal Cetak</td>
-            <td class="separator">:</td>
-            <td>{{ now()->format('d F Y') }}</td>
-            <td class="label">Dosen PA</td>
-            <td class="separator">:</td>
-            <td>{{ $mahasiswa->dosenPa->user->name ?? '-' }}</td>
-        </tr>
+    <h2>KARTU HASIL STUDI (KHS)</h2>
+
+    <!-- INFO MAHASISWA -->
+    <table class="info">
+        <tr><td width="120">NAMA</td><td>: {{ $mahasiswa->user->name }}</td></tr>
+        <tr><td>NIM</td><td>: {{ $mahasiswa->nim }}</td></tr>
+        <tr><td>FAKULTAS</td><td>: {{ $mahasiswa->prodi->fakultas->nama ?? '-' }}</td></tr>
+        <tr><td>PRODI</td><td>: {{ $mahasiswa->prodi->nama ?? '-' }}</td></tr>
+        <tr><td>SEMESTER</td><td>: {{ $tahunAkademik->semester }} ({{ $tahunAkademik->tahun }})</td></tr>
+        <tr><td>DOSEN PA</td><td>: {{ $mahasiswa->dosenPa->user->name ?? '-' }}</td></tr>
     </table>
 
-    <table class="nilai">
-        <thead>
+    <br>
+
+    <!-- TABEL NILAI -->
+    <div class="nilai">
+        <table>
+            <thead>
             <tr>
-                <th style="width: 40px;">No</th>
-                <th style="width: 80px;">Kode MK</th>
-                <th>Nama Mata Kuliah</th>
-                <th style="width: 50px;">SKS</th>
-                <th style="width: 60px;">Nilai Angka</th>
-                <th style="width: 60px;">Nilai Huruf</th>
-                <th style="width: 60px;">Bobot</th>
+                <th>No</th>
+                <th>Kode MK</th>
+                <th class="left">Mata Uji</th>
+                <th>SKS</th>
+                <th>HM</th>
+                <th>AM</th>
+                <th>NK</th>
+                <th>Keterangan</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             @php $totalSks = 0; $totalBobot = 0; @endphp
             @forelse($nilaiList as $index => $nilai)
             @php
@@ -106,68 +244,79 @@
                 $nilaiBobot = $bobot * $mk->sks;
                 $totalSks += $mk->sks;
                 $totalBobot += $nilaiBobot;
+                // Keterangan berdasarkan nilai huruf
+                $keterangan = match($nilai->nilai_huruf) {
+                    'A' => 'Sangat Baik',
+                    'B+' => 'Baik',
+                    'B' => 'Cukup Baik',
+                    'C+' => 'Cukup',
+                    'C' => 'Kurang',
+                    'D' => 'Sangat Kurang',
+                    default => '-'
+                };
             @endphp
             <tr>
-                <td class="center">{{ $index + 1 }}</td>
-                <td class="center">{{ $mk->kode_mk }}</td>
-                <td>{{ $mk->nama_mk }}</td>
-                <td class="center">{{ $mk->sks }}</td>
-                <td class="center">{{ $nilai->nilai_angka ?? '-' }}</td>
-                <td class="center"><strong>{{ $nilai->nilai_huruf ?? '-' }}</strong></td>
-                <td class="center">{{ number_format($nilaiBobot, 1) }}</td>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $mk->kode_mk }}</td>
+                <td class="left">{{ $mk->nama_mk }}</td>
+                <td>{{ $mk->sks }}</td>
+                <td>{{ $nilai->nilai_angka ?? '-' }}</td>
+                <td><strong>{{ $nilai->nilai_huruf ?? '-' }}</strong></td>
+                <td>{{ number_format($nilaiBobot, 1) }}</td>
+                <td>{{ $keterangan }}</td>
             </tr>
             @empty
             <tr>
-                <td colspan="7" class="center">Belum ada nilai</td>
+                <td colspan="8" class="center">Belum ada nilai</td>
             </tr>
             @endforelse
-        </tbody>
-        <tfoot>
             <tr>
-                <td colspan="3" class="right">Total</td>
-                <td class="center">{{ $totalSks }}</td>
-                <td colspan="2" class="center">IPS</td>
-                <td class="center"><strong>{{ number_format($ipsData['ips'], 2) }}</strong></td>
+                <td colspan="3" class="center"><b>Jumlah</b></td>
+                <td><b>{{ $totalSks }}</b></td>
+                <td colspan="3"><b>{{ number_format($totalBobot, 1) }}</b></td>
+                <td></td>
             </tr>
-        </tfoot>
+        </table>
+    </div>
+
+    <br>
+
+    <!-- IP -->
+    <table class="summary">
+        <tr><td>IP Semester sebelumnya<span style="margin-left: 20px;">=</span><span style="margin-left: 20px;">-</span></td></tr>
+        <tr><td>IP Semester sekarang<span style="margin-left: 20px;">=</span><span style="margin-left: 20px;">{{ number_format($ipsData['ips'], 2) }}</td></tr>
+        <tr><td>IP Kumulatif (IPK)<span style="margin-left: 20px;">=</span><span style="margin-left: 20px;">{{ number_format($ipsData['ips'], 2) }}</td></tr>
+        <tr><td>SKS yang bisa diprogramkan<span style="margin-left: 20px;">=</span><span style="margin-left: 20px;">{{ $ipkData['total_sks'] }}</td></tr>
     </table>
 
-    <div class="summary">
-        <div class="summary-box">
-            <div class="value">{{ number_format($ipsData['ips'], 2) }}</div>
-            <div class="label">IPS Semester Ini</div>
+    <!-- TANDA TANGAN -->
+    <div class="footer">
+        <div class="ttd">
+            Mengetahui,<br>
+            Kepala Bagian Administrasi<br>
+            Akademik Kemahasiswaan
+            <div class="nama">Yahya, A.Md</div>
+            NITK. 7700009423
         </div>
-        <div class="summary-box">
-            <div class="value">{{ number_format($ipkData['ips'], 2) }}</div>
-            <div class="label">IPK Kumulatif</div>
-        </div>
-        <div class="summary-box">
-            <div class="value">{{ $ipsData['total_sks'] }}</div>
-            <div class="label">SKS Semester Ini</div>
-        </div>
-        <div class="summary-box">
-            <div class="value">{{ $ipkData['total_sks'] }}</div>
-            <div class="label">SKS Kumulatif</div>
+
+        <div class="ttd">
+            Kota Bima, {{ now()->format('d F Y') }}<br>
+            {{ $mahasiswa->prodi->fakultas->nama ?? '-' }}<br>
+            Ketua Program Studi {{ $mahasiswa->prodi->nama ?? '-' }}
+            <div class="nama">Irwansyah, S.T., M.Pd</div>
+            NIDN. 0827049402
         </div>
     </div>
 
-    <div class="footer">
-        <div class="signature">
-            Mengetahui,<br>
-            Dosen Pembimbing Akademik
-            <div class="line">
-                <strong>{{ $mahasiswa->dosenPa->user->name ?? '_______________________' }}</strong><br>
-                NIP. ___________________
-            </div>
-        </div>
-        <div class="signature">
-            Kota Akademik, {{ now()->format('d F Y') }}<br>
-            Ketua Program Studi
-            <div class="line">
-                <strong>_______________________</strong><br>
-                NIP. ___________________
-            </div>
-        </div>
+    <!-- KETERANGAN -->
+    <div class="keterangan">
+        <b>Keterangan:</b><br>
+        Lembar Kuning untuk BAAK<br>
+        Lembar Pink untuk PRODI<br>
+        Lembar Putih untuk MAHASISWA
     </div>
+
+</div>
+
 </body>
 </html>

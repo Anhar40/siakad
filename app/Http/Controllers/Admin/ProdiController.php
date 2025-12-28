@@ -55,8 +55,9 @@ class ProdiController extends Controller
         
         $fakultas = $query->get();
         $isSuperAdmin = $user->isSuperAdmin();
+        $dosens = \App\Models\Dosen::with('user')->get();
         
-        return view('admin.prodi.index', compact('fakultas', 'isSuperAdmin'));
+        return view('admin.prodi.index', compact('fakultas', 'isSuperAdmin', 'dosens'));
     }
 
     public function store(Request $request)
@@ -64,6 +65,7 @@ class ProdiController extends Controller
         $validated = $request->validate([
             'fakultas_id' => 'required|exists:fakultas,id',
             'nama'        => 'required|string|max:255',
+            'ketua_prodi' => 'nullable|string|max:255',
         ]);
         
         // Check if user can create prodi in this fakultas
@@ -83,6 +85,7 @@ class ProdiController extends Controller
         $validated = $request->validate([
             'fakultas_id' => 'required|exists:fakultas,id',
             'nama'        => 'required|string|max:255',
+            'ketua_prodi' => 'nullable|string|max:255',
         ]);
         
         // Check if user can move prodi to target fakultas

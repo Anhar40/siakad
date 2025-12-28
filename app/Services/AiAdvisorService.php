@@ -13,9 +13,10 @@ class AiAdvisorService
 {
     protected AdvisorContextBuilder $contextBuilder;
     protected AdvisorGuards $guards;
-    protected string $apiKey;
-    protected string $model;
-    protected string $provider;
+    protected ?string $apiKey = null;
+    protected ?string $model = null;
+    protected ?string $provider = null;
+
 
     protected const MAX_RETRIES = 1;
 
@@ -25,18 +26,20 @@ class AiAdvisorService
     ) {
         $this->contextBuilder = $contextBuilder;
         $this->guards = $guards;
-        
-        // Get AI provider from config (default: qwen)
-        $this->provider = config('services.ai_provider', 'qwen');
-        
+
+        $this->provider = config('services.ai_provider') ?? 'qwen';
+
         if ($this->provider === 'qwen') {
-            $this->apiKey = config('services.qwen.api_key', '');
-            $this->model = config('services.qwen.model', 'Qwen/Qwen3-4B-Instruct-2507');
+            $this->apiKey = config('services.qwen.api_key') ?? null;
+            $this->model  = config('services.qwen.model') ?? 'Qwen/Qwen3-4B-Instruct-2507';
+        } elseif ($this->provider === 'gemini') {
+            $this->apiKey = config('services.gemini.api_key') ?? null;
+            $this->model  = 'gemini-2.5-flash-lite';
         } else {
-            $this->apiKey = config('services.gemini.api_key', '');
-            $this->model = 'gemini-2.5-flash-lite';
+            throw new \Exception("AI provider tidak dikenal: {$this->provider}");
         }
     }
+
 
     /**
      * Send a chat message to Gemini with grounded student context

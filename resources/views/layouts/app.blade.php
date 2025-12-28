@@ -5,8 +5,98 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name') }}</title>
+        @php
+            $routeName = request()->route()?->getName() ?? 'default';
+            $logo = asset('og/opengraph.jpg');
+            // Default metadata
+            $og = [
+                'title' => 'SIAKAD - Sistem Informasi Akademik',
+                'description' => 'Sistem Informasi Akademik Kampus Terpadu',
+                'image' => $logo,
+            ];
+        
+            // Penentuan metadata berdasarkan prefix atau nama route
+            if (str_starts_with($routeName, 'admin.')) {
+                $og['title'] = 'Admin Panel | SIAKAD';
+                $og['description'] = 'Manajemen data akademik, user, fakultas, dan laporan sistem.';
+                
+                if (str_contains($routeName, 'dashboard')) $og['title'] = 'Dashboard Admin - SIAKAD';
+                if (str_contains($routeName, 'mahasiswa')) $og['title'] = 'Manajemen Mahasiswa - SIAKAD';
+                if (str_contains($routeName, 'dosen')) $og['title'] = 'Manajemen Dosen - SIAKAD';
+                if (str_contains($routeName, 'skripsi') || str_contains($routeName, 'kp')) $og['title'] = 'Monitoring Tugas Akhir/KP';
+        
+            } elseif (str_starts_with($routeName, 'mahasiswa.')) {
+                $og['title'] = 'Portal Mahasiswa | SIAKAD';
+                $og['description'] = 'Akses KRS, KHS, Transkrip Nilai, dan materi perkuliahan mahasiswa.';
+                
+                if (str_contains($routeName, 'krs')) $og['title'] = 'Pengisian KRS - SIAKAD';
+                if (str_contains($routeName, 'khs') || str_contains($routeName, 'transkrip')) $og['title'] = 'Nilai & Akademik - SIAKAD';
+                if (str_contains($routeName, 'ai-advisor')) $og['title'] = 'AI Academic Advisor - SIAKAD';
+                if (str_contains($routeName, 'lms') || str_contains($routeName, 'tugas')) $og['title'] = 'E-Learning & Tugas - SIAKAD';
+        
+            } elseif (str_starts_with($routeName, 'dosen.')) {
+                $og['title'] = 'Portal Dosen | SIAKAD';
+                $og['description'] = 'Manajemen perkuliahan, input nilai, presensi, dan bimbingan mahasiswa.';
+                
+                if (str_contains($routeName, 'penilaian')) $og['title'] = 'Input Nilai Mahasiswa - SIAKAD';
+                if (str_contains($routeName, 'presensi')) $og['title'] = 'Presensi Perkuliahan - SIAKAD';
+                if (str_contains($routeName, 'bimbingan')) $og['title'] = 'Bimbingan Akademik & KRS - SIAKAD';
+        
+            } else {
+                // Route Umum & Auth
+                $og = match ($routeName) {
+                    'login' => [
+                        'title' => 'Login SIAKAD',
+                        'description' => 'Masuk ke Sistem Informasi Akademik',
+                        'image' => $logo,
+                    ],
+                    'register' => [
+                        'title' => 'Registrasi Akun',
+                        'description' => 'Daftar akun baru Sistem Informasi Akademik',
+                        'image' => $logo,
+                    ],
+                    'password.request' => [
+                        'title' => 'Reset Password',
+                        'description' => 'Pulihkan akses akun SIAKAD Anda',
+                        'image' => $logo,
+                    ],
+                    'profile.edit' => [
+                        'title' => 'Pengaturan Profil',
+                        'description' => 'Update informasi profil dan keamanan akun',
+                        'image' => $logo,
+                    ],
+                    'health', 'health.detailed' => [
+                        'title' => 'System Status',
+                        'description' => 'Status kesehatan server dan layanan',
+                        'image' => $logo,
+                    ],
+                    default => $og,
+                };
+            }
+        @endphp
 
+        <title>{{ $og['title'] }}</title>
+    <meta name="description" content="{{ $og['description'] }}">
+    {{-- Open Graph --}}
+    <meta property="og:title" content="{{ $og['title'] }}">
+    <meta property="og:description" content="{{ $og['description'] }}">
+    <meta property="og:image" content="{{ $og['image'] }}">
+    <meta property="og:image:secure_url" content="{{ $og['image'] }}">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SIAKAD">
+    <meta property="og:locale" content="id_ID">
+
+    {{-- WhatsApp / Facebook --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $og['title'] }}">
+    <meta name="twitter:description" content="{{ $og['description'] }}">
+    <meta name="twitter:image" content="{{ $og['image'] }}">
+        
+        
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700&display=swap" rel="stylesheet" />

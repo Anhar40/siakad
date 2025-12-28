@@ -5,7 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    @php
+        $routeName = request()->route()?->getName() ?? 'default';
+        $logo = asset('og/opengraph.jpg');
+        $appName = 'SIAKAD';
+    
+        // Default OG jika tidak ada yang cocok
+        $og = [
+            'title' => 'SIAKAD - Sistem Informasi Akademik',
+            'description' => 'Sistem Informasi Akademik Terpadu.',
+            'image' => $logo,
+        ];
+    
+        // Menggunakan Match untuk semua route yang Anda inginkan
+        $og = match ($routeName) {
+            // Auth Routes
+            'login' => [
+                'title' => "Login Portal Akademik | $appName",
+                'description' => "Masuk ke akun Anda untuk mengakses layanan perkuliahan.",
+                'image' => $logo
+            ],
+            'register' => [
+                'title' => "Registrasi Mahasiswa | $appName",
+                'description' => "Daftar akun baru Sistem Informasi Akademik.",
+                'image' => $logo
+            ],
+            'password.request' => [
+                'title' => "Pemulihan Kata Sandi | $appName",
+                'description' => "Atur ulang kata sandi akun SIAKAD Anda.",
+                'image' => $logo
+            ],
+    
+            // Mahasiswa Routes (Gunakan titik '.' sesuai ->name('mahasiswa.'))
+            'mahasiswa.dashboard' => [
+                'title' => "Dashboard Mahasiswa | $appName",
+                'description' => "Selamat datang di panel akademik mahasiswa.",
+                'image' => $logo
+            ],
+            'mahasiswa.krs.index' => [
+                'title' => "Pengisian KRS | $appName",
+                'description' => "Halaman pengisian Kartu Rencana Studi semester aktif.",
+                'image' => $logo
+            ],
+            'mahasiswa.transkrip.index' => [
+                'title' => "Transkrip Nilai | $appName",
+                'description' => "Lihat riwayat nilai akademik keseluruhan.",
+                'image' => $logo
+            ],
+    
+            // Admin Routes
+            'admin.dashboard' => [
+                'title' => "Dashboard Admin | $appName",
+                'description' => "Panel kendali pusat sistem informasi akademik.",
+                'image' => $logo
+            ],
+    
+            // Dosen Routes
+            'dosen.dashboard' => [
+                'title' => "Dashboard Dosen | $appName",
+                'description' => "Manajemen pengajaran dan perwalian mahasiswa.",
+                'image' => $logo
+            ],
+    
+            // Jika tidak ada yang cocok, gunakan default $og di atas
+            default => $og,
+        };
+    @endphp
+
+    
+
+    <title>{{ $og['title'] }}</title>
+    <meta name="description" content="{{ $og['description'] }}">
+    {{-- Open Graph --}}
+    <meta property="og:title" content="{{ $og['title'] }}">
+    <meta property="og:description" content="{{ $og['description'] }}">
+    <meta property="og:image" content="{{ $og['image'] }}">
+    <meta property="og:image:secure_url" content="{{ $og['image'] }}">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SIAKAD">
+    <meta property="og:locale" content="id_ID">
+
+    {{-- WhatsApp / Facebook --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $og['title'] }}">
+    <meta name="twitter:description" content="{{ $og['description'] }}">
+    <meta name="twitter:image" content="{{ $og['image'] }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -14,6 +102,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="font-sans antialiased text-gray-900 bg-white dark:bg-gray-900 selection:bg-siakad-primary selection:text-white">
     <div class="min-h-screen flex">
         

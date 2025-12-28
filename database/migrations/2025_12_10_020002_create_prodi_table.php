@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('fakultas_id')->constrained('fakultas')->cascadeOnDelete();
             $table->string('nama');
+            $table->string('ketua_prodi')->nullable();
             $table->timestamps();
         });
     }
