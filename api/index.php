@@ -1,20 +1,16 @@
 <?php
 
-use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
+// 1. Tampilkan error agar kita bisa debug jika masih gagal
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-define('LARAVEL_START', microtime(true));
+// 2. Paksa Laravel menggunakan folder /tmp untuk cache views
+// Karena folder storage asli di Vercel bersifat Read-Only
+putenv('VIEW_COMPILED_PATH=/tmp/storage/framework/views');
 
-// Determine if the application is in maintenance mode...
-if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
-    require $maintenance;
+// 3. Buat folder tmp jika belum ada (opsional tapi disarankan)
+if (!is_dir('/tmp/storage/framework/views')) {
+    mkdir('/tmp/storage/framework/views', 0755, true);
 }
 
-// Register the Composer autoloader...
-require __DIR__.'/../vendor/autoload.php';
-
-// Bootstrap Laravel and handle the request...
-/** @var Application $app */
-$app = require_once __DIR__.'/../bootstrap/app.php';
-
-$app->handleRequest(Request::capture());
+require __DIR__ . '/../public/index.php';
