@@ -3,28 +3,26 @@
 // 1. Path utama
 $basePath = __DIR__ . '/..';
 
+// 2. Siapkan folder temporer (Wajib untuk Vercel)
+$storagePath = '/tmp/storage';
+foreach ([
+    '/framework/views',
+    '/framework/cache/data', // Tambahkan subfolder data
+    '/framework/sessions',
+    '/bootstrap/cache'
+] as $path) {
+    if (!is_dir($storagePath . $path)) {
+        mkdir($storagePath . $path, 0755, true);
+    }
+}
+
 // 3. Override Konfigurasi agar tidak crash
-
-putenv("APP_ENV=production");
-putenv("APP_DEBUG=true");
-putenv("APP_URL=https://yourproductionurl.com");
-putenv("APP_KEY=base64:m2d7rGQ9BtpqNmCDJDp01KElX2oUIPJLlPfC1KNTDoo=");
-putenv("CACHE_DRIVER=array");
-putenv("LOG_CHANNEL=stderr");
-putenv("APP_MAINTENANCE_DRIVER=file");
-putenv("LOG_DEPRECATIONS_CHANNEL=null");
-putenv("LOG_STACK=single");
-putenv("LOG_LEVEL=debug");
-putenv("SESSION_DRIVER=database");
-putenv("SESSION_LIFETIME=120");
-putenv("SESSION_ENCRYPT=false");
-putenv("SESSION_PATH=/");
-putenv("SESSION_DOMAIN=null");
-putenv("BROADCAST_CONNECTION=log");
-putenv("FILESYSTEM_DISK=production");
-putenv("QUEUE_CONNECTION=database");
-putenv("CACHE_STORE=database");
-
+putenv("VIEW_COMPILED_PATH={$storagePath}/framework/views");
+putenv("SESSION_DRIVER=array"); // Paling aman untuk Vercel
+putenv("CACHE_STORE=array");      // Gunakan 'file', bukan 'array'
+putenv("CACHE_DIRECTORY={/framework/cache/data");
+putenv("APP_CONFIG_CACHE={$storagePath}/bootstrap/cache/config.php");
+putenv("APP_DEBUG=true");        // Biarkan true dulu untuk pantau error berikutnya
 
 // 4. Jalankan aplikasi
 require $basePath . '/public/index.php';

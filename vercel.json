@@ -21,19 +21,10 @@
         "APP_KEY": "base64:m2d7rGQ9BtpqNmCDJDp01KElX2oUIPJLlPfC1KNTDoo=",
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
+        "SESSION_DRIVER": "array",
+        "QUEUE_CONNECTION": "sync",
         "APP_MAINTENANCE_DRIVER": "file",
-        "LOG_DEPRECATIONS_CHANNEL": "null",
-        "LOG_STACK": "single",
-        "LOG_LEVEL": "debug",
-        "SESSION_DRIVER": "database",
-        "SESSION_LIFETIME": 120,
-        "SESSION_ENCRYPT": false,
-        "SESSION_PATH": "/",
-        "SESSION_DOMAIN": null,
-        "BROADCAST_CONNECTION": "log",
-        "FILESYSTEM_DISK": "production",
-        "QUEUE_CONNECTION": "database",
-        "CACHE_STORE": "database"
+        "CACHE_STORE": "array"
     }
     
 }
