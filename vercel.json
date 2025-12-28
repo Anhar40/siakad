@@ -16,21 +16,24 @@
     "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
-        "APP_DEBUG": "false",
+        "APP_DEBUG": "true",
         "APP_URL": "https://yourproductionurl.com",
         "APP_KEY": "base64:m2d7rGQ9BtpqNmCDJDp01KElX2oUIPJLlPfC1KNTDoo=",
-        "APP_CONFIG_CACHE": "/tmp/storage/bootstrap/cache/config.php",
-        "APP_EVENTS_CACHE": "/tmp/storage/bootstrap/cache/events.php",
-        "APP_PACKAGES_CACHE": "/tmp/storage/bootstrap/cache/packages.php",
-        "APP_ROUTES_CACHE": "/tmp/storage/bootstrap/cache/routes.php",
-        "APP_SERVICES_CACHE": "/tmp/storage/bootstrap/cache/services.php",
-        "VIEW_COMPILED_PATH": "/tmp/storage/framework/views",
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "array",
-        "QUEUE_CONNECTION": "sync",
         "APP_MAINTENANCE_DRIVER": "file",
-        "CACHE_STORE": "file"
+        "LOG_DEPRECATIONS_CHANNEL": "null",
+        "LOG_STACK": "single",
+        "LOG_LEVEL": "debug",
+        "SESSION_DRIVER": "database",
+        "SESSION_LIFETIME": 120,
+        "SESSION_ENCRYPT": false,
+        "SESSION_PATH": "/",
+        "SESSION_DOMAIN": null,
+        "BROADCAST_CONNECTION": "log",
+        "FILESYSTEM_DISK": "local",
+        "QUEUE_CONNECTION": "database",
+        "CACHE_STORE": "database"
     }
     
 }
