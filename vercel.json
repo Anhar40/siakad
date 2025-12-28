@@ -29,7 +29,7 @@
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
         "QUEUE_CONNECTION": "sync",
-        "APP_MAINTENANCE_DRIVER": "array"
+        "APP_MAINTENANCE_DRIVER": "null"
 
     }
     
