@@ -1,7 +1,9 @@
 <?php
 
 // 1. Tampilkan error agar kita bisa debug jika masih gagal
+
 ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // 2. Paksa Laravel menggunakan folder /tmp untuk cache views
