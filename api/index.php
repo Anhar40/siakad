@@ -18,7 +18,7 @@ foreach ([
 
 // 3. Override Konfigurasi agar tidak crash
 putenv("VIEW_COMPILED_PATH={$storagePath}/framework/views");
-putenv("SESSION_DRIVER=array"); // Paling aman untuk Vercel
+putenv("SESSION_DRIVER=file"); // Paling aman untuk Vercel
 putenv("CACHE_STORE=file");      // Gunakan 'file', bukan 'array'
 putenv("CACHE_DIRECTORY={$storagePath}/framework/cache/data");
 putenv("APP_CONFIG_CACHE={$storagePath}/bootstrap/cache/config.php");
