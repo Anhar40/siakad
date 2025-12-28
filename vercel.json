@@ -28,7 +28,7 @@
         "CACHE_DRIVER": "array",
         "QUEUE_CONNECTION": "sync",
         "APP_MAINTENANCE_DRIVER": "database",
-        "SESSION_DRIVER": "database",
+        "SESSION_DRIVER": "array",
         "SESSION_LIFETIME": "120",
         "SESSION_ENCRYPT": "false",
         "SESSION_PATH": "/",
