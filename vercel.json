@@ -25,11 +25,12 @@
         "APP_ROUTES_CACHE": "/tmp/storage/bootstrap/cache/routes.php",
         "APP_SERVICES_CACHE": "/tmp/storage/bootstrap/cache/services.php",
         "VIEW_COMPILED_PATH": "/tmp/storage/framework/views",
-        "CACHE_DRIVER": "cookie",
+        "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie",
+        "SESSION_DRIVER": "array",
         "QUEUE_CONNECTION": "sync",
-        "APP_MAINTENANCE_DRIVER": "file"
+        "APP_MAINTENANCE_DRIVER": "file",
+        "CACHE_STORE": "file"
     }
     
 }
