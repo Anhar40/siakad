@@ -17,7 +17,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
-        "APP_URL": "https://yourproductionurl.com",
+        "APP_URL": "https://siakad-coba.vercel.app",
         "APP_KEY": "base64:m2d7rGQ9BtpqNmCDJDp01KElX2oUIPJLlPfC1KNTDoo=",
         "APP_CONFIG_CACHE": "/tmp/storage/bootstrap/cache/config.php",
         "APP_EVENTS_CACHE": "/tmp/storage/bootstrap/cache/events.php",
