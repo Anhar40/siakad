@@ -99,7 +99,7 @@
         <!-- Future: Social Login -->
         
         <p class="text-center text-xs text-gray-500 dark:text-gray-400 mt-8">
-            Having trouble? <a href="#" class="font-medium text-siakad-primary hover:text-siakad-dark dark:text-cyan-400 dark:hover:text-cyan-300 transition-colors">Contact Support</a>
+            Having trouble? <a href="https://wa.me/6287841947229" class="font-medium text-siakad-primary hover:text-siakad-dark dark:text-cyan-400 dark:hover:text-cyan-300 transition-colors">Contact Support</a>
         </p>
     </form>
 </x-guest-layout>
