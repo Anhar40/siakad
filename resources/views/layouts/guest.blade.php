@@ -8,7 +8,6 @@
     @php
         $routeName = request()->route()?->getName() ?? 'default';
         $logo = asset('og/LOGO_KAMPUS.jpg');
-        $icon = asset(favicon.ico);
         $appName = 'SIAKAD';
     
         // Default OG jika tidak ada yang cocok
@@ -16,7 +15,6 @@
             'title' => 'SIAKAD - Sistem Informasi Akademik',
             'description' => 'Sistem Informasi Akademik Terpadu.',
             'image' => $logo,
-            'icon' => $icon,
         ];
     
         // Menggunakan Match untuk semua route yang Anda inginkan
@@ -77,7 +75,7 @@
     
 
     <title>{{ $og['title'] }}</title>
-    <meta rel="icon" href="$og['icon'] }}" sizes="32x32">
+    <meta rel="icon" href="https://siakad-coba.vercel.app/favicon.ico" sizes="32x32">
     <meta name="description" content="{{ $og['description'] }}">
     {{-- Open Graph --}}
     <meta property="og:title" content="{{ $og['title'] }}">
