@@ -9,7 +9,7 @@
         { "src": "/favicon.png", "dest": "/public/favicon.png" },
         { "src": "/og/(.*)", "dest": "/public/og/$1" },
         { "src": "/assets/(.*)", "dest": "/public/assets/$1" },
-        { "src": "/build/(.*)", "dest": "/public/build/" },
+        { "src": "/build/(.*)", "dest": "/public/build/$1" },
         { "src": "/(.*)", "dest": "/api/index.php" }
     ],
     "public": true,
