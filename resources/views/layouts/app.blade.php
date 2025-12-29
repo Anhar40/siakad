@@ -8,13 +8,11 @@
         @php
             $routeName = request()->route()?->getName() ?? 'default';
             $logo = asset('og/LOGO_KAMPUS.jpg');
-            $icon = asset(favicon.ico);
             // Default metadata
             $og = [
                 'title' => 'SIAKAD - Sistem Informasi Akademik',
                 'description' => 'Sistem Informasi Akademik Kampus Terpadu',
                 'image' => $logo,
-                'icon' => $icon,
             ];
         
             // Penentuan metadata berdasarkan prefix atau nama route
@@ -78,7 +76,7 @@
         @endphp
 
         <title>{{ $og['title'] }}</title>
-    <meta rel="icon" href="$og['icon'] }}" sizes="32x32">
+    <meta rel="icon" href="https://siakad-coba.vercel.app/favicon.ico" sizes="32x32">
     <meta name="description" content="{{ $og['description'] }}">
     {{-- Open Graph --}}
     <meta property="og:title" content="{{ $og['title'] }}">
