@@ -7,7 +7,7 @@
 
         @php
             $routeName = request()->route()?->getName() ?? 'default';
-            $logo = asset('og/LOGO_KAMPUS.png');
+            $logo = asset('og/LOGO_KAMPUS.jpg');
             // Default metadata
             $og = [
                 'title' => 'SIAKAD - Sistem Informasi Akademik',
