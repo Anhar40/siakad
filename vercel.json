@@ -2,31 +2,22 @@
     "version": 2,
     "framework": null,
     "functions": {
-        "api/index.php": {
-            "runtime": "vercel-php@0.7.4"
-        }
+        "api/index.php": { "runtime": "vercel-php@0.7.4" }
     },
     "routes": [
-        {
-            "src": "/(favicon\\.ico|favicon\\.png|apple-touch-icon\\.png|android-chrome-192x192\\.png|android-chrome-512x512\\.png|manifest\\.webmanifest|robots\\.txt)",
-            "dest": "/public/$1"
-        },
-        {
-            "src": "/og/(.*)",
-            "dest": "/public/og/$1"
-        },
-        {
-            "src": "/assets/(.*)",
-            "dest": "/public/assets/$1"
-        },
-        {
-            "src": "/build/(.*)",
-            "dest": "/public/build/$1"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/api/index.php"
-        }
+        { "src": "/android-chrome-192x192.png", "dest": "/public/android-chrome-192x192.png" },
+        { "src": "/android-chrome-512x512.png", "dest": "/public/android-chrome-512x512.png" },
+        { "src": "/apple-touch-icon.png", "dest": "/public/apple-touch-icon.png" },
+        { "src": "/favicon-16x16.png", "dest": "/public/favicon-16x16.png" },
+        { "src": "/favicon-32x32.png", "dest": "/public/favicon-32x32.png" },
+        { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
+        { "src": "/favicon.png", "dest": "/public/favicon.png" },
+        { "src": "/build/manifest.json", "dest": "/public/build/manifest.json"},
+        { "src": "/build/manifest.webmanifest", "dest": "/public/build/manifest.webmanifest" },
+        { "src": "/og/(.*)", "dest": "/public/og/$1" },
+        { "src": "/assets/(.*)", "dest": "/public/assets/$1" },
+        { "src": "/build/(.*)", "dest": "/public/build/$1" },
+        { "src": "/(.*)", "dest": "/api/index.php" }
     ],
     "public": true,
     "buildCommand": "vite build",
@@ -50,4 +41,5 @@
         "APP_MAINTENANCE_DRIVER": "file",
         "CACHE_STORE": "array"
     }
+    
 }
