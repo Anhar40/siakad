@@ -12,7 +12,7 @@
         { "src": "/favicon-32x32.png", "dest": "/public/favicon-32x32.png" },
         { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
         { "src": "/favicon.png", "dest": "/public/favicon.png" },
-        { "src": "/site.webmanifest", "dest": "/public/site.webmanifest" },
+        { "src": "/manifest.json", "dest": "/public/manifest.json" },
         { "src": "/og/(.*)", "dest": "/public/og/$1" },
         { "src": "/assets/(.*)", "dest": "/public/assets/$1" },
         { "src": "/build/(.*)", "dest": "/public/build/$1" },
