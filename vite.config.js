@@ -16,7 +16,7 @@ export default defineConfig({
                 theme_color: '#0d6efd',
                 background_color: '#ffffff',
                 display: 'standalone',
-                start_url: '/login',
+                start_url: '/',
                 icons: [
                     {
                         src: '/android-chrome-192x192.png',
