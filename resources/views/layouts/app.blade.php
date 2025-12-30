@@ -133,7 +133,7 @@
                 if (meta) {
                     meta.setAttribute(
                         'content',
-                        isDark ? '#0b132b' : '#0d6efd'
+                        isDark ? '#0b132b' : '#fefeff'
                     );
                 }
             })();
