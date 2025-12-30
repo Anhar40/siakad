@@ -76,6 +76,7 @@
         @endphp
 
     <title>{{ $og['title'] }}</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -113,8 +114,6 @@
             if (localStorage.getItem('darkMode') === 'true') {
                 document.documentElement.classList.add('dark');
             }
-
-
             // Sidebar state - apply immediately to prevent FOUC
             (function() {
                 var sidebarState = localStorage.getItem('sidebarOpen');
@@ -122,7 +121,6 @@
                     document.documentElement.classList.add('sidebar-collapsed-init');
                 }
             })();
-
 
             (function () {
                 const isDark = localStorage.getItem('darkMode') === 'true';
@@ -450,6 +448,12 @@
                 document.body.classList.toggle('dark', isDark);
                 localStorage.setItem('darkMode', isDark);
                 
+                // Toggle icons
+                const meta = document.getElementById('theme-color-meta');
+                meta.setAttribute(
+                    'content',
+                    isDark ? '#0b132b' : '#fefeff'
+                );
                 const moonIcon = document.getElementById('moonIcon');
                 const sunIcon = document.getElementById('sunIcon');
                 if (moonIcon && sunIcon) {
