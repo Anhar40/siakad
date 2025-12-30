@@ -7,150 +7,101 @@
 
         @php
             $routeName = request()->route()?->getName() ?? 'default';
-        
-            // OG Image default (hasil dari favicon.io / logo kampus)
             $logo = asset('og/LOGO_KAMPUS.jpg');
-        
-            // Default metadata global
+            // Default metadata
             $og = [
-                'title' => 'SIAKAD - Sistem Informasi Akademik Kampus',
-                'description' => 'SIAKAD adalah Sistem Informasi Akademik Kampus terpadu yang digunakan untuk mengelola seluruh aktivitas akademik secara digital, mulai dari pengelolaan data mahasiswa, dosen, perkuliahan, nilai, hingga laporan akademik secara real-time dan terintegrasi.',
+                'title' => 'SIAKAD - Sistem Informasi Akademik',
+                'description' => 'Sistem Informasi Akademik Kampus Terpadu',
                 'image' => $logo,
             ];
         
-            /* =========================
-               ADMIN
-            ==========================*/
+            // Penentuan metadata berdasarkan prefix atau nama route
             if (str_starts_with($routeName, 'admin.')) {
                 $og['title'] = 'Admin Panel | SIAKAD';
-                $og['description'] = 'Panel administrator SIAKAD untuk mengelola data akademik kampus secara terpusat, termasuk manajemen mahasiswa, dosen, fakultas, program studi, mata kuliah, serta monitoring laporan dan statistik sistem akademik.';
+                $og['description'] = 'Manajemen data akademik, user, fakultas, dan laporan sistem.';
+                
+                if (str_contains($routeName, 'dashboard')) $og['title'] = 'Dashboard Admin - SIAKAD';
+                if (str_contains($routeName, 'mahasiswa')) $og['title'] = 'Manajemen Mahasiswa - SIAKAD';
+                if (str_contains($routeName, 'dosen')) $og['title'] = 'Manajemen Dosen - SIAKAD';
+                if (str_contains($routeName, 'skripsi') || str_contains($routeName, 'kp')) $og['title'] = 'Monitoring Tugas Akhir/KP';
         
-                if (str_contains($routeName, 'dashboard')) {
-                    $og['title'] = 'Dashboard Admin - SIAKAD';
-                    $og['description'] = 'Dashboard Admin SIAKAD yang menampilkan ringkasan data akademik kampus, statistik mahasiswa dan dosen, aktivitas perkuliahan, serta status sistem secara keseluruhan.';
-                }
-        
-                if (str_contains($routeName, 'mahasiswa')) {
-                    $og['title'] = 'Manajemen Mahasiswa - SIAKAD';
-                    $og['description'] = 'Halaman manajemen mahasiswa untuk mengelola data mahasiswa aktif, status akademik, riwayat studi, KRS, KHS, serta administrasi akademik lainnya secara terstruktur.';
-                }
-        
-                if (str_contains($routeName, 'dosen')) {
-                    $og['title'] = 'Manajemen Dosen - SIAKAD';
-                    $og['description'] = 'Pengelolaan data dosen meliputi identitas, beban mengajar, mata kuliah, presensi, dan keterlibatan dosen dalam kegiatan akademik kampus.';
-                }
-        
-                if (str_contains($routeName, 'skripsi') || str_contains($routeName, 'kp')) {
-                    $og['title'] = 'Monitoring Tugas Akhir & KP - SIAKAD';
-                    $og['description'] = 'Fitur monitoring Kerja Praktik dan Tugas Akhir mahasiswa untuk memantau progres, dosen pembimbing, jadwal, serta status penyelesaian secara sistematis.';
-                }
-        
-            /* =========================
-               MAHASISWA
-            ==========================*/
             } elseif (str_starts_with($routeName, 'mahasiswa.')) {
                 $og['title'] = 'Portal Mahasiswa | SIAKAD';
-                $og['description'] = 'Portal Mahasiswa SIAKAD untuk mengakses layanan akademik seperti pengisian KRS, melihat KHS, transkrip nilai, jadwal perkuliahan, materi pembelajaran, serta informasi akademik lainnya secara online.';
+                $og['description'] = 'Akses KRS, KHS, Transkrip Nilai, dan materi perkuliahan mahasiswa.';
+                
+                if (str_contains($routeName, 'krs')) $og['title'] = 'Pengisian KRS - SIAKAD';
+                if (str_contains($routeName, 'khs') || str_contains($routeName, 'transkrip')) $og['title'] = 'Nilai & Akademik - SIAKAD';
+                if (str_contains($routeName, 'ai-advisor')) $og['title'] = 'AI Academic Advisor - SIAKAD';
+                if (str_contains($routeName, 'lms') || str_contains($routeName, 'tugas')) $og['title'] = 'E-Learning & Tugas - SIAKAD';
         
-                if (str_contains($routeName, 'krs')) {
-                    $og['title'] = 'Pengisian KRS Mahasiswa - SIAKAD';
-                    $og['description'] = 'Halaman pengisian Kartu Rencana Studi (KRS) mahasiswa untuk memilih mata kuliah sesuai kurikulum dan ketentuan akademik yang berlaku.';
-                }
-        
-                if (str_contains($routeName, 'khs') || str_contains($routeName, 'transkrip')) {
-                    $og['title'] = 'KHS & Transkrip Nilai - SIAKAD';
-                    $og['description'] = 'Informasi Kartu Hasil Studi (KHS) dan transkrip nilai mahasiswa yang menampilkan hasil akademik setiap semester secara lengkap dan transparan.';
-                }
-        
-                if (str_contains($routeName, 'ai-advisor')) {
-                    $og['title'] = 'AI Academic Advisor - SIAKAD';
-                    $og['description'] = 'Fitur AI Academic Advisor yang membantu mahasiswa mendapatkan rekomendasi akademik, saran pengambilan mata kuliah, dan perencanaan studi secara cerdas.';
-                }
-        
-                if (str_contains($routeName, 'lms') || str_contains($routeName, 'tugas')) {
-                    $og['title'] = 'E-Learning & Tugas Mahasiswa - SIAKAD';
-                    $og['description'] = 'Sistem E-Learning SIAKAD untuk mengakses materi perkuliahan, mengumpulkan tugas, serta berinteraksi dengan dosen secara online.';
-                }
-        
-            /* =========================
-               DOSEN
-            ==========================*/
             } elseif (str_starts_with($routeName, 'dosen.')) {
                 $og['title'] = 'Portal Dosen | SIAKAD';
-                $og['description'] = 'Portal Dosen SIAKAD untuk mengelola perkuliahan, input nilai mahasiswa, presensi kelas, serta proses bimbingan akademik secara terintegrasi.';
+                $og['description'] = 'Manajemen perkuliahan, input nilai, presensi, dan bimbingan mahasiswa.';
+                
+                if (str_contains($routeName, 'penilaian')) $og['title'] = 'Input Nilai Mahasiswa - SIAKAD';
+                if (str_contains($routeName, 'presensi')) $og['title'] = 'Presensi Perkuliahan - SIAKAD';
+                if (str_contains($routeName, 'bimbingan')) $og['title'] = 'Bimbingan Akademik & KRS - SIAKAD';
         
-                if (str_contains($routeName, 'penilaian')) {
-                    $og['title'] = 'Input Nilai Mahasiswa - SIAKAD';
-                    $og['description'] = 'Halaman input dan pengelolaan nilai mahasiswa oleh dosen secara cepat, aman, dan terstruktur sesuai kebijakan akademik kampus.';
-                }
-        
-                if (str_contains($routeName, 'presensi')) {
-                    $og['title'] = 'Presensi Perkuliahan - SIAKAD';
-                    $og['description'] = 'Fitur presensi perkuliahan untuk mencatat kehadiran mahasiswa dan dosen dalam setiap sesi perkuliahan.';
-                }
-        
-                if (str_contains($routeName, 'bimbingan')) {
-                    $og['title'] = 'Bimbingan Akademik - SIAKAD';
-                    $og['description'] = 'Manajemen bimbingan akademik dan KRS mahasiswa yang memudahkan dosen dalam memantau perkembangan studi mahasiswa.';
-                }
-        
-            /* =========================
-               AUTH & UMUM
-            ==========================*/
             } else {
+                // Route Umum & Auth
                 $og = match ($routeName) {
                     'login' => [
-                        'title' => 'Login SIAKAD - Sistem Informasi Akademik',
-                        'description' => 'Halaman login resmi Sistem Informasi Akademik Kampus (SIAKAD). Masuk sebagai Admin, Dosen, atau Mahasiswa untuk mengakses layanan akademik digital secara aman.',
+                        'title' => 'Login SIAKAD',
+                        'description' => 'Masuk ke Sistem Informasi Akademik',
                         'image' => $logo,
                     ],
                     'register' => [
-                        'title' => 'Registrasi Akun SIAKAD',
-                        'description' => 'Halaman pendaftaran akun baru Sistem Informasi Akademik Kampus untuk mahasiswa dan dosen.',
+                        'title' => 'Registrasi Akun',
+                        'description' => 'Daftar akun baru Sistem Informasi Akademik',
                         'image' => $logo,
                     ],
                     'password.request' => [
-                        'title' => 'Reset Password SIAKAD',
-                        'description' => 'Halaman pemulihan kata sandi akun SIAKAD untuk menjaga keamanan dan akses pengguna.',
+                        'title' => 'Reset Password',
+                        'description' => 'Pulihkan akses akun SIAKAD Anda',
+                        'image' => $logo,
+                    ],
+                    'profile.edit' => [
+                        'title' => 'Pengaturan Profil',
+                        'description' => 'Update informasi profil dan keamanan akun',
+                        'image' => $logo,
+                    ],
+                    'health', 'health.detailed' => [
+                        'title' => 'System Status',
+                        'description' => 'Status kesehatan server dan layanan',
                         'image' => $logo,
                     ],
                     default => $og,
                 };
             }
         @endphp
-        
-        
-        <title>{{ $og['title'] }}</title>
 
-        <meta name="description" content="{{ $og['description'] }}">
-        
-        <!-- Favicon (hasil favicon.io) -->
-        <link rel="icon" href="/favicon.ico">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-        <link rel="manifest" href="/site.webmanifest">
-        
-        <!-- Open Graph -->
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="{{ $og['title'] }}">
-        <meta property="og:description" content="{{ $og['description'] }}">
-        <meta property="og:image" content="{{ $og['image'] }}">
-        <meta property="og:image:secure_url" content="{{ $og['image'] }}">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-        <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:site_name" content="SIAKAD">
-        <meta property="og:locale" content="id_ID">
-        
-        <!-- Twitter / WhatsApp -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="{{ $og['title'] }}">
-        <meta name="twitter:description" content="{{ $og['description'] }}">
-        <meta name="twitter:image" content="{{ $og['image'] }}">
-        
+    <title>{{ $og['title'] }}</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta rel="icon" href="/favicon-32x32.ico" sizes="32x32">
+    <meta name="theme-color" content="#fefeff" id="theme-color-meta">
+    {{-- Primary Meta Tags --}}
+    <meta name="description" content="{{ $og['description'] }}">
+    {{-- Open Graph --}}
+    <meta property="og:title" content="{{ $og['title'] }}">
+    <meta property="og:description" content="{{ $og['description'] }}">
+    <meta property="og:image" content="{{ $og['image'] }}">
+    <meta property="og:image:secure_url" content="{{ $og['image'] }}">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SIAKAD">
+    <meta property="og:locale" content="id_ID">
 
-        
+    {{-- WhatsApp / Facebook --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $og['title'] }}">
+    <meta name="twitter:description" content="{{ $og['description'] }}">
+    <meta name="twitter:image" content="{{ $og['image'] }}">
         
         
         <!-- Fonts -->
@@ -480,6 +431,11 @@
                 document.body.classList.toggle('dark', isDark);
                 localStorage.setItem('darkMode', isDark);
                 // Toggle icons
+                const meta = document.getElementById('theme-color-meta');
+                meta.setAttribute(
+                    'content',
+                    isDark ? '#0b132b' : '#fefeff'
+                );
                 const moonIcon = document.getElementById('moonIcon');
                 const sunIcon = document.getElementById('sunIcon');
                 if (moonIcon && sunIcon) {
