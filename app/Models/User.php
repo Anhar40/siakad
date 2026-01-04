@@ -28,8 +28,18 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            #'password' => 'hashed',
         ];
+    }
+    
+    protected function password(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) =>
+                Str::startsWith($value, ['$2y$', '$2b$'])
+                    ? $value
+                    : Hash::make($value),
+        );
     }
 
     public function mahasiswa()

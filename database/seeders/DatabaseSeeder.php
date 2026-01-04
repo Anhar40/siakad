@@ -160,8 +160,8 @@ class DatabaseSeeder extends Seeder
         // ==========================================
         $mahasiswaUser = User::create([
             'name' => 'Budi Santoso',
-            'email' => 'mahasiswa@siakad.test',
-            'password' => Hash::make('password'),
+            'email' => 'anharaldevaro@gmail.com',
+            'password' => Hash::make('Anhar12345'),
             'role' => 'mahasiswa',
         ]);
 
