@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -29,19 +28,10 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            #'password' => 'hashed',
+            'password' => 'hashed',
         ];
     }
     
-    protected function password(): Attribute
-    {
-        return Attribute::make(
-            set: fn ($value) =>
-                Str::startsWith($value, ['$2y$', '$2b$'])
-                    ? $value
-                    : Hash::make($value),
-        );
-    }
 
     public function mahasiswa()
     {
