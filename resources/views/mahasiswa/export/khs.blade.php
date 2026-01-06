@@ -287,7 +287,7 @@
 
     <br>
     @php
-        $ipk = {{ number_format($ipsData['ips'], 2) }}; // Pastikan ada nilai default jika data kosong
+        $ipk = $ipsData['ips'] ?? 0; // Pastikan ada nilai default jika data kosong
         $maxSks = 0;
     
         if($ipk >= 3.00) {
