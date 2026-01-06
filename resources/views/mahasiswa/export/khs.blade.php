@@ -286,6 +286,20 @@
     </div>
 
     <br>
+    @php
+        $ipk = $ipkData['ipk'] ?? 0; // Pastikan ada nilai default jika data kosong
+        $maxSks = 0;
+    
+        if($ipk >= 3.00) {
+            $maxSks = 24;
+        } elseif($ipk >= 2.50) {
+            $maxSks = 21;
+        } elseif($ipk >= 2.00) {
+            $maxSks = 18;
+        } else {
+            $maxSks = 15; // Standar minimal biasanya 12 atau 15 SKS
+        }
+    @endphp
 
     <!-- IP -->
     <table class="summary">
