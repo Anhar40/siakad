@@ -319,8 +319,11 @@
             NITK. 7700009423
         </div>
         @php
-            // Mencari dosen yang namanya sama dengan ketua_prodi di tabel prodi
-            $dosen = \App\Models\Dosen::where('nama', $mahasiswa->prodi->ketua_prodi)->first();
+            // 1. Cari User berdasarkan nama yang ada di kolom ketua_prodi
+            $userKetua = \App\Models\User::where('name', $mahasiswa->prodi->ketua_prodi)->first();
+            
+            // 2. Jika user ditemukan, ambil data dosen-nya untuk mendapatkan NIDN
+            $dosenKetua = $userKetua ? \App\Models\Dosen::where('user_id', $userKetua->id)->first() : null;
         @endphp
 
         <div class="ttd">
@@ -328,7 +331,7 @@
             {{ $mahasiswa->prodi->fakultas->nama ?? '-' }}<br>
             Ketua Program Studi {{ $mahasiswa->prodi->nama ?? '-' }}
             <div class="nama">{{ $mahasiswa->prodi->ketua_prodi ?? '-' }}</div>
-            NIDN. {{ $dosen->nidn ?? '-' }}
+            NIDN. {{ $dosenKetua->nidn ?? '-' }}
         </div>
     </div>
 
