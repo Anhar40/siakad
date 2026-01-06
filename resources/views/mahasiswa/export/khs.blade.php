@@ -323,7 +323,7 @@
             Kota Bima, {{ now()->format('d F Y') }}<br>
             {{ $mahasiswa->prodi->fakultas->nama ?? '-' }}<br>
             Ketua Program Studi {{ $mahasiswa->prodi->nama ?? '-' }}
-            <div class="nama">Irwansyah, S.T., M.Pd</div>
+            <div class="nama">{{ $mahasiswa->prodi->ketua_prodi ?? '-' }}</div>
             NIDN. 0827049402
         </div>
     </div>
