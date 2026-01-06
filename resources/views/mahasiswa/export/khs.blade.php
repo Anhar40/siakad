@@ -318,13 +318,17 @@
             <div class="nama">Yahya, A.Md</div>
             NITK. 7700009423
         </div>
+        @php
+            // Mencari dosen yang namanya sama dengan ketua_prodi di tabel prodi
+            $dosen = \App\Models\Dosen::where('nama', $mahasiswa->prodi->ketua_prodi)->first();
+        @endphp
 
         <div class="ttd">
             Kota Bima, {{ now()->format('d F Y') }}<br>
             {{ $mahasiswa->prodi->fakultas->nama ?? '-' }}<br>
             Ketua Program Studi {{ $mahasiswa->prodi->nama ?? '-' }}
             <div class="nama">{{ $mahasiswa->prodi->ketua_prodi ?? '-' }}</div>
-            NIDN. {{ $mahasiswa->prodi->nidn ?? '-' }}
+            NIDN. {{ $dosen->nidn ?? '-' }}
         </div>
     </div>
 

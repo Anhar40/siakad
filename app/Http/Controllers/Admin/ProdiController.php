@@ -66,7 +66,7 @@ class ProdiController extends Controller
             'fakultas_id' => 'required|exists:fakultas,id',
             'nama'        => 'required|string|max:255',
             'ketua_prodi' => 'nullable|string|max:255',
-            'nidn' => 'required|string|unique:dosen,nidn',
+            
         ]);
         
         // Check if user can create prodi in this fakultas
@@ -87,7 +87,6 @@ class ProdiController extends Controller
             'fakultas_id' => 'required|exists:fakultas,id',
             'nama'        => 'required|string|max:255',
             'ketua_prodi' => 'nullable|string|max:255',
-            'nidn' => 'required|string|unique:dosen,nidn',
         ]);
         
         // Check if user can move prodi to target fakultas
