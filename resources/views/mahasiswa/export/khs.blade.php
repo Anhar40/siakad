@@ -233,12 +233,15 @@
             @php
                 $mk = $nilai->kelas->mataKuliah;
                 $bobot = match($nilai->nilai_huruf) {
-                    'A' => 4.0,
-                    'B+' => 3.5,
-                    'B' => 3.0,
-                    'C+' => 2.5,
-                    'C' => 2.0,
-                    'D' => 1.0,
+                    'A' => 4.00,
+                    'A-' => 3.75,
+                    'B+' => 3.50,
+                    'B' => 3.00,
+                    'B-' => 2.75,
+                    'C+' => 2.50,
+                    'C' => 2.00,
+                    'C-' => 1.75,
+                    'D' => 1.00,
                     default => 0
                 };
                 $nilaiBobot = $bobot * $mk->sks;
@@ -247,10 +250,13 @@
                 // Keterangan berdasarkan nilai huruf
                 $keterangan = match($nilai->nilai_huruf) {
                     'A' => 'Sangat Baik',
+                    'A-' => 'Baik Sekali',
                     'B+' => 'Baik',
                     'B' => 'Cukup Baik',
+                    'B-' => 'Cukup',
                     'C+' => 'Cukup',
                     'C' => 'Kurang',
+                    'C-' => 'Kurang Sekali',
                     'D' => 'Sangat Kurang',
                     default => '-'
                 };
@@ -283,7 +289,7 @@
 
     <!-- IP -->
     <table class="summary">
-        <tr><td>IP Semester sebelumnya<span style="margin-left: 20px;">=</span><span style="margin-left: 20px;">-</span></td></tr>
+        <tr><td>IP Semester sebelumnya<span style="margin-left: 20px;">=</span><span style="margin-left: 20px;">{{ number_format($ipsData['ips'], 1) }}</span></td></tr>
         <tr><td>IP Semester sekarang<span style="margin-left: 20px;">=</span><span style="margin-left: 20px;">{{ number_format($ipsData['ips'], 2) }}</td></tr>
         <tr><td>IP Kumulatif (IPK)<span style="margin-left: 20px;">=</span><span style="margin-left: 20px;">{{ number_format($ipsData['ips'], 2) }}</td></tr>
         <tr><td>SKS yang bisa diprogramkan<span style="margin-left: 20px;">=</span><span style="margin-left: 20px;">{{ $ipkData['total_sks'] }}</td></tr>

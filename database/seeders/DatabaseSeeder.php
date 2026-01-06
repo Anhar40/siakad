@@ -282,82 +282,80 @@ class DatabaseSeeder extends Seeder
     {
         return [
             // ====== SEMESTER 1 (20 SKS) ======
-            ['kode_mk' => 'TI101', 'nama_mk' => 'Algoritma dan Pemrograman I', 'sks' => 4, 'semester' => 1, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI102', 'nama_mk' => 'Matematika Diskrit', 'sks' => 3, 'semester' => 1, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI103', 'nama_mk' => 'Pengantar Teknologi Informasi', 'sks' => 3, 'semester' => 1, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI104', 'nama_mk' => 'Kalkulus I', 'sks' => 3, 'semester' => 1, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI105', 'nama_mk' => 'Fisika Dasar', 'sks' => 3, 'semester' => 1, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI106', 'nama_mk' => 'Bahasa Inggris I', 'sks' => 2, 'semester' => 1, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI107', 'nama_mk' => 'Pendidikan Pancasila', 'sks' => 2, 'semester' => 1, 'prodi_id' => $prodiId],
-
-            // ====== SEMESTER 2 (20 SKS) ======
-            ['kode_mk' => 'TI201', 'nama_mk' => 'Algoritma dan Pemrograman II', 'sks' => 4, 'semester' => 2, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI202', 'nama_mk' => 'Struktur Data', 'sks' => 4, 'semester' => 2, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI203', 'nama_mk' => 'Kalkulus II', 'sks' => 3, 'semester' => 2, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI204', 'nama_mk' => 'Aljabar Linear', 'sks' => 3, 'semester' => 2, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI205', 'nama_mk' => 'Bahasa Inggris II', 'sks' => 2, 'semester' => 2, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI206', 'nama_mk' => 'Pendidikan Kewarganegaraan', 'sks' => 2, 'semester' => 2, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI207', 'nama_mk' => 'Praktikum Algoritma', 'sks' => 2, 'semester' => 2, 'prodi_id' => $prodiId],
-
-            // ====== SEMESTER 3 (20 SKS) ======
-            ['kode_mk' => 'TI301', 'nama_mk' => 'Pemrograman Berorientasi Objek', 'sks' => 4, 'semester' => 3, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI302', 'nama_mk' => 'Basis Data', 'sks' => 4, 'semester' => 3, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI303', 'nama_mk' => 'Sistem Operasi', 'sks' => 3, 'semester' => 3, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI304', 'nama_mk' => 'Statistika dan Probabilitas', 'sks' => 3, 'semester' => 3, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI305', 'nama_mk' => 'Organisasi dan Arsitektur Komputer', 'sks' => 3, 'semester' => 3, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI306', 'nama_mk' => 'Praktikum Basis Data', 'sks' => 2, 'semester' => 3, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI307', 'nama_mk' => 'Agama', 'sks' => 2, 'semester' => 3, 'prodi_id' => $prodiId],
-
-            // ====== SEMESTER 4 (20 SKS) ======
-            ['kode_mk' => 'TI401', 'nama_mk' => 'Pemrograman Web', 'sks' => 4, 'semester' => 4, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI402', 'nama_mk' => 'Jaringan Komputer', 'sks' => 4, 'semester' => 4, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI403', 'nama_mk' => 'Rekayasa Perangkat Lunak', 'sks' => 3, 'semester' => 4, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI404', 'nama_mk' => 'Interaksi Manusia dan Komputer', 'sks' => 3, 'semester' => 4, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI405', 'nama_mk' => 'Analisis dan Perancangan Sistem', 'sks' => 3, 'semester' => 4, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI406', 'nama_mk' => 'Praktikum Jaringan', 'sks' => 2, 'semester' => 4, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI407', 'nama_mk' => 'Etika Profesi', 'sks' => 2, 'semester' => 4, 'prodi_id' => $prodiId],
-
-            // ====== SEMESTER 5 (20 SKS) ======
-            ['kode_mk' => 'TI501', 'nama_mk' => 'Pemrograman Mobile', 'sks' => 4, 'semester' => 5, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI502', 'nama_mk' => 'Kecerdasan Buatan', 'sks' => 3, 'semester' => 5, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI503', 'nama_mk' => 'Keamanan Sistem Informasi', 'sks' => 3, 'semester' => 5, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI504', 'nama_mk' => 'Sistem Terdistribusi', 'sks' => 3, 'semester' => 5, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI505', 'nama_mk' => 'Manajemen Proyek TI', 'sks' => 3, 'semester' => 5, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI506', 'nama_mk' => 'Praktikum Mobile', 'sks' => 2, 'semester' => 5, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI507', 'nama_mk' => 'Kewirausahaan', 'sks' => 2, 'semester' => 5, 'prodi_id' => $prodiId],
-
-            // ====== SEMESTER 6 (18 SKS) ======
-            ['kode_mk' => 'TI601', 'nama_mk' => 'Machine Learning', 'sks' => 3, 'semester' => 6, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI602', 'nama_mk' => 'Data Mining', 'sks' => 3, 'semester' => 6, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI603', 'nama_mk' => 'Cloud Computing', 'sks' => 3, 'semester' => 6, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI604', 'nama_mk' => 'Pengolahan Citra Digital', 'sks' => 3, 'semester' => 6, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI605', 'nama_mk' => 'Metodologi Penelitian', 'sks' => 2, 'semester' => 6, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI606', 'nama_mk' => 'Kerja Praktek', 'sks' => 4, 'semester' => 6, 'prodi_id' => $prodiId],
-
-            // ====== SEMESTER 7 (14 SKS) ======
-            ['kode_mk' => 'TI701', 'nama_mk' => 'Internet of Things', 'sks' => 3, 'semester' => 7, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI702', 'nama_mk' => 'Big Data Analytics', 'sks' => 3, 'semester' => 7, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI703', 'nama_mk' => 'Natural Language Processing', 'sks' => 3, 'semester' => 7, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI704', 'nama_mk' => 'Proyek 1 (Proposal Skripsi)', 'sks' => 2, 'semester' => 7, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI705', 'nama_mk' => 'Pilihan 1', 'sks' => 3, 'semester' => 7, 'prodi_id' => $prodiId],
-
-            // ====== SEMESTER 8 (12 SKS) ======
-            ['kode_mk' => 'TI801', 'nama_mk' => 'Deep Learning', 'sks' => 3, 'semester' => 8, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI802', 'nama_mk' => 'Pilihan 2', 'sks' => 3, 'semester' => 8, 'prodi_id' => $prodiId],
-            ['kode_mk' => 'TI803', 'nama_mk' => 'Skripsi', 'sks' => 6, 'semester' => 8, 'prodi_id' => $prodiId],
+            // SEMESTER I
+            ['kode_mk' => 'PIP1105', 'nama_mk' => 'Bahasa inggris', 'sks' => 2, 'semester' => 1, 'prodi_id' => 1],
+            ['kode_mk' => 'IT1106', 'nama_mk' => 'Pengantar teknologi informasi', 'sks' => 2, 'semester' => 1, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2421', 'nama_mk' => 'Algoritma dan Pemrograman Dasar', 'sks' => 2, 'semester' => 1, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2421', 'nama_mk' => 'Prak Algoritma dan Pemrograman Dasar', 'sks' => 1, 'semester' => 1, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2208', 'nama_mk' => 'Organisasi dan Arsitektur komputer', 'sks' => 2, 'semester' => 1, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2208', 'nama_mk' => 'Prak Organisasi dan Arsitektur komputer', 'sks' => 1, 'semester' => 1, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2105', 'nama_mk' => 'Logika informatika', 'sks' => 2, 'semester' => 1, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2318', 'nama_mk' => 'Kalkulus', 'sks' => 2, 'semester' => 1, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2211', 'nama_mk' => 'Matematika diskrit', 'sks' => 2, 'semester' => 1, 'prodi_id' => 1],
+            ['kode_mk' => 'PIP1101', 'nama_mk' => 'Pendidikan Agama', 'sks' => 2, 'semester' => 1, 'prodi_id' => 1],
+            ['kode_mk' => 'PIP1102', 'nama_mk' => 'Pendidikan Pancasila', 'sks' => 2, 'semester' => 1, 'prodi_id' => 1],
+        
+            // SEMESTER II
+            ['kode_mk' => 'IT2207', 'nama_mk' => 'Sistem operasi', 'sks' => 2, 'semester' => 2, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2315', 'nama_mk' => 'Pemrograman Berorientasi Objek', 'sks' => 2, 'semester' => 2, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2212', 'nama_mk' => 'Teknologi Basis Data', 'sks' => 2, 'semester' => 2, 'prodi_id' => 1],
+            ['kode_mk' => 'PIP1206', 'nama_mk' => 'Kewirausahaan', 'sks' => 2, 'semester' => 2, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2209', 'nama_mk' => 'Aljabar Linear', 'sks' => 2, 'semester' => 2, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2747', 'nama_mk' => 'Statistik', 'sks' => 2, 'semester' => 2, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2747', 'nama_mk' => 'Prak Statistik', 'sks' => 1, 'semester' => 2, 'prodi_id' => 1],
+            ['kode_mk' => 'PIP1104', 'nama_mk' => 'Bahasa Indonesia', 'sks' => 2, 'semester' => 2, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2534', 'nama_mk' => 'Metode Numerik', 'sks' => 2, 'semester' => 2, 'prodi_id' => 1],
+        
+            // SEMESTER III
+            ['kode_mk' => 'IT2317', 'nama_mk' => 'Struktur Data', 'sks' => 2, 'semester' => 3, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2317', 'nama_mk' => 'Prak Struktur Data', 'sks' => 1, 'semester' => 3, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2423', 'nama_mk' => 'Pemrograman Web I', 'sks' => 2, 'semester' => 3, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2423', 'nama_mk' => 'Prak Pemrograman Web I', 'sks' => 1, 'semester' => 3, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2214', 'nama_mk' => 'Sistem Informasi', 'sks' => 2, 'semester' => 3, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2214', 'nama_mk' => 'Prak Sistem Informasi', 'sks' => 1, 'semester' => 3, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2639', 'nama_mk' => 'Komunikasi Data dan Jaringan Komputer', 'sks' => 2, 'semester' => 3, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2639', 'nama_mk' => 'Prak Komunikasi Data dan Jaringan Komputer', 'sks' => 1, 'semester' => 3, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2536', 'nama_mk' => 'Rekayasa Perangkat Lunak', 'sks' => 2, 'semester' => 3, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2536', 'nama_mk' => 'Prak Rekayasa Perangkat Lunak', 'sks' => 1, 'semester' => 3, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2424', 'nama_mk' => 'Interaksi Manusia dan Komputer', 'sks' => 2, 'semester' => 3, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2424', 'nama_mk' => 'Prak Interaksi Manusia dan Komputer', 'sks' => 1, 'semester' => 3, 'prodi_id' => 1],
+        
+            // SEMESTER IV
+            ['kode_mk' => 'IT2426', 'nama_mk' => 'Pemrograman Web II', 'sks' => 2, 'semester' => 4, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2426', 'nama_mk' => 'Prak Pemrograman Web II', 'sks' => 1, 'semester' => 4, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2213', 'nama_mk' => 'Keamanan Informasi dan Jaringan', 'sks' => 2, 'semester' => 4, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2213', 'nama_mk' => 'Prak Keamanan Informasi dan Jaringan', 'sks' => 1, 'semester' => 4, 'prodi_id' => 1],
+            ['kode_mk' => 'IT4311', 'nama_mk' => 'Kecerdasan Buatan', 'sks' => 2, 'semester' => 4, 'prodi_id' => 1],
+            ['kode_mk' => 'IT4311', 'nama_mk' => 'Prak Kecerdasan Buatan', 'sks' => 1, 'semester' => 4, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2215', 'nama_mk' => 'Cloud Computing', 'sks' => 2, 'semester' => 4, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2215', 'nama_mk' => 'Prak Cloud Computing', 'sks' => 1, 'semester' => 4, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2641', 'nama_mk' => 'Ethical Hacking', 'sks' => 2, 'semester' => 4, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2425', 'nama_mk' => 'Pemrograman Mobile', 'sks' => 2, 'semester' => 4, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2425', 'nama_mk' => 'Prak Pemrograman Mobile', 'sks' => 1, 'semester' => 4, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2746', 'nama_mk' => 'Metodelogi Penelitian', 'sks' => 3, 'semester' => 4, 'prodi_id' => 1],
+        
+            // SEMESTER V
+            ['kode_mk' => 'IT2210', 'nama_mk' => 'Big Data dan Analitik', 'sks' => 2, 'semester' => 5, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2210', 'nama_mk' => 'Prak Big Data dan Analitik', 'sks' => 1, 'semester' => 5, 'prodi_id' => 1],
+            ['kode_mk' => 'IT6138', 'nama_mk' => 'Sistem Cerdas', 'sks' => 2, 'semester' => 5, 'prodi_id' => 1],
+            ['kode_mk' => 'IT6138', 'nama_mk' => 'Prak Sistem Cerdas', 'sks' => 1, 'semester' => 5, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2537', 'nama_mk' => 'Analisis dan Perancangan Sistem', 'sks' => 2, 'semester' => 5, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2537', 'nama_mk' => 'Prak Analisis dan Perancangan Sistem', 'sks' => 1, 'semester' => 5, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2558', 'nama_mk' => 'Sistem Terdistribusi', 'sks' => 2, 'semester' => 5, 'prodi_id' => 1],
+            ['kode_mk' => 'IT2558', 'nama_mk' => 'Prak Sistem Terdistribusi', 'sks' => 1, 'semester' => 5, 'prodi_id' => 1],
         ];
     }
 
     private function convertToLetter(int $nilai): string
     {
         return match (true) {
-            $nilai >= 85 => 'A',
-            $nilai >= 80 => 'A-',
-            $nilai >= 75 => 'B+',
-            $nilai >= 70 => 'B',
-            $nilai >= 65 => 'C+',
-            $nilai >= 60 => 'C',
-            $nilai >= 55 => 'D',
+            $nilai >= 80 => 'A',
+            $nilai >= 75 => 'A-',
+            $nilai >= 70 => 'B+',
+            $nilai >= 65 => 'B',
+            $nilai >= 60 => 'C+',
+            $nilai >= 55 => 'C',
+            $nilai >= 50 => 'D',
             default => 'E',
         };
     }
