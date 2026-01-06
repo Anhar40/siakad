@@ -292,7 +292,7 @@
         <tr><td>IP Semester sebelumnya<span style="margin-left: 20px;">=</span><span style="margin-left: 20px;">{{ number_format($ipsData['ips'], 1) }}</span></td></tr>
         <tr><td>IP Semester sekarang<span style="margin-left: 20px;">=</span><span style="margin-left: 20px;">{{ number_format($ipsData['ips'], 2) }}</td></tr>
         <tr><td>IP Kumulatif (IPK)<span style="margin-left: 20px;">=</span><span style="margin-left: 20px;">{{ number_format($ipsData['ips'], 2) }}</td></tr>
-        <tr><td>SKS yang bisa diprogramkan<span style="margin-left: 20px;">=</span><span style="margin-left: 20px;">{{ $ipkData['total_sks'] }}</td></tr>
+        <tr><td>SKS yang bisa diprogramkan<span style="margin-left: 20px;">=</span><span style="margin-left: 20px;">{{ $maxSks }}</td></tr>
     </table>
 
     <!-- TANDA TANGAN -->
