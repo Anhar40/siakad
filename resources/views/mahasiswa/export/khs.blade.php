@@ -324,7 +324,7 @@
             {{ $mahasiswa->prodi->fakultas->nama ?? '-' }}<br>
             Ketua Program Studi {{ $mahasiswa->prodi->nama ?? '-' }}
             <div class="nama">{{ $mahasiswa->prodi->ketua_prodi ?? '-' }}</div>
-            NIDN. {{ $dosen->prodi->ketua_prodi->nidn ?? '-' }}
+            NIDN. {{ $mahasiswa->prodi->ketua_prodi->nidn ?? '-' }}
         </div>
     </div>
 
