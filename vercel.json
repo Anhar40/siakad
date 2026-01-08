@@ -2,7 +2,7 @@
     "version": 2,
     "framework": null,
     "functions": {
-        "api/index.php": { "runtime": "vercel-php@0.7.4" }
+        "api/index.php": { "runtime": "vercel-php@0.7.4", "memory": 1024 }
     },
     "routes": [
         { "src": "/android-chrome-192x192.png", "dest": "/public/android-chrome-192x192.png" },
@@ -25,7 +25,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://siakad-coba.vercel.app",
+        "APP_URL": "https://siakad-unswa.vercel.app",
         "APP_CONFIG_CACHE": "/tmp/storage/bootstrap/cache/config.php",
         "APP_EVENTS_CACHE": "/tmp/storage/bootstrap/cache/events.php",
         "APP_PACKAGES_CACHE": "/tmp/storage/bootstrap/cache/packages.php",
